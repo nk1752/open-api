@@ -31,16 +31,20 @@
 
     <dependencies>
         
-        <dependency>
-  			<groupId>com.azure.spring</groupId>
-  			<artifactId>spring-cloud-azure-starter</artifactId>
+       <!-- https://mvnrepository.com/artifact/com.azure.spring/spring-cloud-azure-starter -->
+		<dependency>
+    		<groupId>com.azure.spring</groupId>
+    		<artifactId>spring-cloud-azure-starter</artifactId>
+    		<version>6.0.0-beta.4</version>
 		</dependency>
         
-        <dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-			<scope>runtime</scope>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+    		<groupId>com.microsoft.sqlserver</groupId>
+    		<artifactId>mssql-jdbc</artifactId>
+    		<version>12.3.0.jre17-preview</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
