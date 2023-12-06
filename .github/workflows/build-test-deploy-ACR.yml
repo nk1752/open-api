@@ -12,14 +12,15 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: vhacr
+  ACR: vhacr
+  ACR_RG: poc-rg
+  CONTAINER_NAME: oauth2rs
+  CONTAINER_TAG: ${{ github.sha }}
+  JAR_FILE_NAME: rest.api.service
+
   CLUSTER_NAME: cluster-poc
   RESOURCE_GROUP: poc-rg
-  CONTAINER_NAME: oauth2rs
   APP_NAME: oauth2rs
-  JAR_FILE_NAME: rest.api.service
-  
-  CONTAINER_TAG: ${{ github.sha }}
   NAMESPACE: poc
   DEPLOYMENT_MANIFEST_PATH: manifest
   ENV: prod
@@ -57,9 +58,9 @@ jobs:
     - name: build and push image to ACR
       run: |
         az acr build \
-        --image ${{ env.CONTAINER_NAME }}:${{ env.CONTAINER_TAG }} \
-        --registry ${{ env.AZURE_CONTAINER_REGISTRY }} \
+        --image ${{ env.ACR }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ env.CONTAINER_TAG }} \
+        --registry ${{ env.ACR }} \
         --build-arg JAR_FILE=./target/open-0.0.1-SNAPSHOT.jar \
         --build-arg ENV=${{ env.ENV }} \
-        -g ${{ env.RESOURCE_GROUP }} \
+        -g ${{ env.ACR_RG }} \
         -f ./dockerfiles/Dockerfile.dev .
