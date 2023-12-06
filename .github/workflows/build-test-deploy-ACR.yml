@@ -15,7 +15,7 @@ env:
   ACR: vhacr
   ACR_RG: poc-rg
   CONTAINER_NAME: oauth2rs
-  CONTAINER_TAG: ${{ github.sha }}
+  CONTAINER_TAG: latest
   JAR_FILE_NAME: rest.api.service
 
   CLUSTER_NAME: cluster-poc
