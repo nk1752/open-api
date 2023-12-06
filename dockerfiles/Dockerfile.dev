@@ -1,4 +1,4 @@
-FROM eclipse-temurin:20-alpine
+FROM eclipse-temurin:17-alpine
 
 # set timezone in docker container
 ENV TZ=America/Chicago
@@ -6,7 +6,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # setup systen group and user
 RUN addgroup --system viva --gid 1001 && adduser --system devops --uid 1001 --ingroup viva
-USER devops
 
 EXPOSE 8080
 
