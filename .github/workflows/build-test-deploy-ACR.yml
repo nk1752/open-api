@@ -14,16 +14,10 @@ on:
 env:
   ACR: vhacr
   ACR_RG: poc-rg
-  CONTAINER_NAME: oauth2rs
+  CONTAINER_NAME: bsrs
   CONTAINER_TAG: latest
   JAR_FILE_NAME: rest.api.service
-
-  CLUSTER_NAME: cluster-poc
-  RESOURCE_GROUP: poc-rg
-  APP_NAME: oauth2rs
-  NAMESPACE: poc
-  DEPLOYMENT_MANIFEST_PATH: manifest
-  ENV: prod
+  ENV: dev
 
 
 jobs:
@@ -60,7 +54,7 @@ jobs:
         az acr build \
         --image ${{ env.ACR }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ env.CONTAINER_TAG }} \
         --registry ${{ env.ACR }} \
-        --build-arg JAR_FILE=./target/open-0.0.1-SNAPSHOT.jar \
+        --build-arg JAR_FILE=./target/open-api-0.0.2-SNAPSHOT.jar \
         --build-arg ENV=${{ env.ENV }} \
         -g ${{ env.ACR_RG }} \
         -f ./dockerfiles/Dockerfile.dev .

@@ -20,5 +20,6 @@ CMD [ "echo, jarfile: ${JAR_FILE}" ]
 
 COPY ${JAR_FILE} rest-api-server.jar
 
+
 # ENTRYPOINT ["java","-jar","/nk-poc.jar"]
 ENTRYPOINT exec java -jar /rest-api-server.jar

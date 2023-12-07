@@ -25,6 +25,10 @@ kubectl get service -A
 
 kubectl create ns my-namespace
 
+mvn clean
+mvn compile
+mvn package
+
 docker build -t open-api -f ./dockerfiles/Dockerfile.dev --build-arg JAR_FILE=./target/*.jar --no-cache .
 docker run -p 8080:8080 open-api
 
