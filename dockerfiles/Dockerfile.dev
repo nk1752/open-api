@@ -1,8 +1,6 @@
 FROM eclipse-temurin:17-alpine
 
-# set timezone in docker container
-ENV TZ=America/Chicago
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update
 
 # setup systen group and user
 RUN addgroup --system viva --gid 1001 && adduser --system devops --uid 1001 --ingroup viva
@@ -14,7 +12,6 @@ ARG ENV
 
 ENV nk=${ENV}
 
-RUN ls
 
 CMD [ "echo, jarfile: ${JAR_FILE}" ]
 
